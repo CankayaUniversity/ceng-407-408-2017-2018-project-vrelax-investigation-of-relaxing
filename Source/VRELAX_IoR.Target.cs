@@ -10,5 +10,5 @@ public class VRELAX_IoRTarget : TargetRules
 		Type = TargetType.Game;
 
 		ExtraModuleNames.AddRange( new string[] { "VRELAX_IoR" } );
-	}
+    }
 }

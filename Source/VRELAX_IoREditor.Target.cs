@@ -10,5 +10,5 @@ public class VRELAX_IoREditorTarget : TargetRules
 		Type = TargetType.Editor;
 
 		ExtraModuleNames.AddRange( new string[] { "VRELAX_IoR" } );
-	}
+    }
 }

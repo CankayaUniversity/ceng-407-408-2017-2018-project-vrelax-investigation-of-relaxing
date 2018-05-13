@@ -7,7 +7,10 @@
 		{
 			"Name": "VRELAX_IoR",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
@@ -15,6 +18,10 @@
 			"Name": "VictoryBPLibrary",
 			"Enabled": true,
 			"MarketplaceURL": "http://www.ue4code.com"
+		},
+		{
+			"Name": "AutoTerrainTexturer",
+			"Enabled": true
 		}
 	]
 }
