@@ -1,2 +1,4 @@
-# ceng-407-408-project-vrelax-investigation-of-relaxing
-ceng-407-408-project-vrelax-investigation-of-relaxing created by GitHub Classroom
+# VRelax Investigation of Relaxing Computer Engineering Project
+
+* Görkem Narinoğlu 201411041
+* Umut Efiloğlu 201311016
