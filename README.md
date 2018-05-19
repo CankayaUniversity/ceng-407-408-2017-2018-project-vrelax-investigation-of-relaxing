@@ -46,3 +46,16 @@ _- Starter Content_
 * Run the VRELAX_IoR.exe to run the application.   
 
 **Note:** If any Prerequisites error occurs try running UE4PrereqSetup_x64.exe file first located in \Engine\Extras\Redist\en-us
+
+### System Requirements
+
+* **Processor:**	Intel™ Core™ i5-4590 or AMD FX™ 8350, equivalent or better
+* **Graphics:**	NVIDIA GeForce™ GTX 1060 or AMD Radeon™ RX 480, equivalent or better.
+* **Memory:**	4 GB RAM or more
+* **Video output::**	1x HDMI 1.4 port, or DisplayPort 1.2
+* **USB:**	1x USB 2.0 port or newer
+* **Operating system:**	Windows™ 7 SP1, Windows™ 8.1 or later or Windows™ 10   
+
+**Note:** Application will work both with or without HTC Vive. You can change key bindings in the editor when compiling. Expect better performance without VR.
+
+### Please refer to [User Manual](https://github.com/CankayaUniversity/ceng-407-408-project-vrelax-investigation-of-relaxing/wiki/User-Manual) before using the application to ensure safe and proper use. 
