@@ -1,2 +1,2 @@
 #pragma once
-bool ht();
+bool ht(int* stressed , int* not_stressed);

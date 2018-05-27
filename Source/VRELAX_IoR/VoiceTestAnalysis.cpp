@@ -45,6 +45,8 @@ const int N = 44100; //number of samples
 
 bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 {
+	int stressed = 0;
+	int not_stressed = 0;
 	UE_LOG(LogTemp, Log, TEXT("%s"), *message)
 		UE_LOG(LogTemp, Log, TEXT("Voice Recording Starts"))
 		/*                                                                   _   _
@@ -78,6 +80,7 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 			raw_to_wav(file_path, file_name, SAMPLE_RATE, BITS_PER_SAMPLE, NUM_CHANNELS, BYTE_RATE);
 		}
 
+		PlaySound(L"data.wav", NULL, SND_FILENAME); // VOICE TEST FEEDBACK
 
 	free(data); // memory free
 	UE_LOG(LogTemp, Log, TEXT("Voice Recording Ends"))
@@ -93,7 +96,6 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 		UE_LOG(LogTemp, Log, TEXT("Voice Reader Starts"))
 
 		AudioFile<double> audioFile;
-		AudioFile<double> audioFile2;
 
 		//load .wav file
 		audioFile.load("data.wav");
@@ -146,7 +148,7 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 			//stores input signal
 		for (int j = 0; j < N; j++)
 		{
-		fscanf(fp2, "%lf\n", &inp[j]);
+			fscanf(fp2, "%lf\n", &inp[j]);
 		}
 		fclose(fp2);
 
@@ -160,8 +162,8 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 		err = eemd(inp, N, outp, M, ensemble_size, noise_strength, S_number, num_siftings, rng_seed);
 		if (err != EMD_SUCCESS)
 		{
-		emd_report_if_error(err);
-		exit(1);
+			emd_report_if_error(err);
+			exit(1);
 		}
 		printf("eemd is done!\n");
 
@@ -170,7 +172,7 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 		FILE* fp = fopen(outfile, "w");
 		 int this_imf = M-3;
 
-		for (int i = M - 3; i <= M - 3; i++)
+		for (int i = M - 4; i <= M - 4; i++) //IMF number
 		for (int j = 0; j < N; j++)
 		{
 		fprintf(fp, "%lf\n", outp[i * N + j]);
@@ -186,16 +188,20 @@ bool UVoiceTestAnalysis::StartVoiceAnalysis(FString message)
 		UE_LOG(LogTemp, Log, TEXT("EEMD Ends"))
 
 		UE_LOG(LogTemp, Log, TEXT("HT Starts"))
-		if (ht())
+		if (ht(&stressed , &not_stressed))
 		{
 			UE_LOG(LogTemp, Log, TEXT("\nYou are stressed!\n"))
+			UE_LOG(LogTemp, Log, TEXT("\nStressed Sample: %d \n"), stressed)
+			UE_LOG(LogTemp, Log, TEXT("\nUnstressed Sample: %d \n"), not_stressed)
+			return true;
 		}
 		else
 		{
 			UE_LOG(LogTemp, Log, TEXT("\nYou are not stressed!"))
+			UE_LOG(LogTemp, Log, TEXT("\nStressed Sample: %d \n"), stressed)
+			UE_LOG(LogTemp, Log, TEXT("\nUnstressed Sample: %d \n"), not_stressed)
+			return false;
 		}
-		
-		return false;
 
 }
 

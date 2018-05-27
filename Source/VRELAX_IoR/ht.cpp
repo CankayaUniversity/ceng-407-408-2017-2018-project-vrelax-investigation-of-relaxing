@@ -71,7 +71,7 @@ void convol(double *source, double *target, double *filt, int npt, int lfilt)
 	}
 }
 
-bool ht()
+bool ht(int* stressed , int* not_stressed)
 {
 	FILE *f = fopen("input_imf.txt", "r");
 	int i, npt;
@@ -147,6 +147,9 @@ bool ht()
 			stressed_sample_num++;
 		}
 	}
+
+	*stressed = stressed_sample_num;
+	*not_stressed = normal_sample_num;
 
 	if (normal_sample_num > stressed_sample_num)
 	{

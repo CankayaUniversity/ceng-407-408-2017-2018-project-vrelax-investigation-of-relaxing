@@ -13,9 +13,6 @@ UCLASS()
 class VRELAX_IOR_API UVoiceTestAnalysis : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
 		UFUNCTION(BlueprintCallable, Category = "Start Voice Test")
 		static bool StartVoiceAnalysis(FString message);
-	
-	
 };
